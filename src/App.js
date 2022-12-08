@@ -3,30 +3,20 @@ import { useState } from "react"
 import BubleChat from './component/BubleChat';
 
 function App() {
-  // const initalValues = {content: '', from: 0}
   const [message, setMessage] = useState('');
-  // const [reponse, setReponse] = useState({content: 'check ne', from: 1});
   const [mesList, setMesList] = useState([]);
-  // const BubbleChat = (message) =>{
-  //   return (
-  //     <div className="chat-bubble me">{message}</div>
 
-  //   )
-  // }
 
   const BubbleChatSend = (mes) => {
     const temp = {"message": mes, "from": 0}
     
     setMessage('')
     mesList.push(temp)
-    // setMesList([...mesList, temp])
-    // return false
   } 
-
+  // Hàm fetch Api
   const handleSubmit = (event) => {
     event.preventDefault();
     BubbleChatSend(message)
-    // if (BubbleChatSend(message)) {
       const data= { "question": message}
       fetch("/post", {
         method:"POST",
@@ -38,17 +28,8 @@ function App() {
       .then((data) => {
         console.log(data)
         const answer= {"message": data.ans, "from": 1}
-        // mesList.push(answer)
         setMesList([...mesList, answer])
-        // console.log(answer)
       });
-    // }
-    
-
-    // console.log(mesList)
-
-
-    
   }
   
   
@@ -73,8 +54,6 @@ function App() {
             </div>
           </form>
         </div>
-        {/* <button type='button' className='btn btn-primary w-50 mt-5 ' onClick={()=>{printValue() }}> Xem chi tiết</button> */}
-        {/* <button onClick={printValue()}> check</button> */}
       </div>
     </div>
 
