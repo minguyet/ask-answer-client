@@ -295,3 +295,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #007368; 
 }
+.hiddens{
+  display: none;
+  /* visibility: hidden */
+}
